@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     supabase_url: str = os.getenv("SUPABASE_URL")
     supabase_service_key: str = os.getenv("SUPABASE_SERVICE_KEY")
-    jwt_secret: str = os.getenv("JWT_SECRET")
+    jwt_secret: str = os.getenv("SUPABASE_JWT_SECRET")
 
     cloudinary_cloud_name: str = os.getenv("CLOUDINARY_CLOUD_NAME")
     cloudinary_api_key: str = os.getenv("CLOUDINARY_API_KEY")
