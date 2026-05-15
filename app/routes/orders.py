@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from app.middleware.rate_limit import limiter
+from fastapi import Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 
 from app.routes.auth import get_current_user
 from app.database import supabase
@@ -18,7 +20,9 @@ router = APIRouter(
 
 
 @router.post("/")
+@limiter.limit("5/minute")
 async def create_order(
+    request: Request,
     data: OrderCreate,
     current_user=Depends(get_current_user)
 ):
