@@ -2,6 +2,8 @@ import os
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
+    supabase_anon_key: str = os.getenv("SUPABASE_ANON_KEY")
+    supabase_jwt_secret: str = os.getenv("SUPABASE_JWT_SECRET")
     supabase_url: str = os.getenv("SUPABASE_URL")
     supabase_service_key: str = os.getenv("SUPABASE_SERVICE_KEY")
     jwt_secret: str = os.getenv("SUPABASE_JWT_SECRET")
